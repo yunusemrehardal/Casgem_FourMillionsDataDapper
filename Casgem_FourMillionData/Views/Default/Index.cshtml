@@ -1,15 +1,6 @@
-﻿@model List<Casgem_FourMillionData.DAL.Entities.Plates>
-@{
+﻿@{
     Layout = null;
 }
-
-
-
-<br />
-<br />
-
-<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,16 +31,16 @@
             <div class="loader-fill"></div>
         </div>
     </div>
-
+    <br />
+    <br />
     <div class="container">
-
         <div class="col-xl-12">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="card text-white bg-primary ">
                         <h5 class="card-header text-white">En Fazla Olan Plaka</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-white">@ViewData["plateMax"] -- @ViewData["countMaxPlate"]</h5>
+                            <h5 class="card-title text-white">@ViewData["plateMax"] -- @ViewData["countMaxPlate"] adet</h5>
                         </div>
                     </div>
                 </div>
@@ -57,7 +48,7 @@
                     <div class="card text-white bg-success ">
                         <h5 class="card-header text-white">En Az Olan Plaka</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-white">@ViewData["plateMin"] -- @ViewData["countMinPlate"]</h5>
+                            <h5 class="card-title text-white">@ViewData["plateMin"] -- @ViewData["countMinPlate"] adet</h5>
                         </div>
                     </div>
                 </div>
@@ -65,7 +56,7 @@
                     <div class="card text-white bg-warning ">
                         <h5 class="card-header text-white">En Çok Tercih Edilen Vites Türü</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-white">@ViewData["shiftType"] -- @ViewData["shiftTypeCount"]</h5>
+                            <h5 class="card-title text-white">@ViewData["shiftType"] -- @ViewData["shiftTypeCount"] adet</h5>
                         </div>
                     </div>
                 </div>
@@ -91,37 +82,36 @@
                     <div class="card text-white bg-info ">
                         <h5 class="card-header text-white">En Fazla Tercih Edilen Yakıt Türü</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-white">@ViewData["fuelType"] -- @ViewData["fuelTypeCount"]</h5>
+                            <h5 class="card-title text-white">@ViewData["fuelType"] -- @ViewData["fuelTypeCount"] adet</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="card text-white bg-info " f>
                         <h5 class="card-header text-white">En Fazla Tercih Edilen Renk</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-white">@ViewData["colorType"] -- @ViewData["colorTypeCount"]</h5>
+                            <h5 class="card-title text-white">@ViewData["colorType"] -- @ViewData["colorTypeCount"] adet</h5>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="input-group mb-3">
                 <form method="post" id="searchForm">
-                    <input type="text" name="keyword" class="form-control" placeholder="Ara" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Ara</button>
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control" placeholder="Ara" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Ara</button>
+                        </div>
                     </div>
                 </form>
             </div>
-
             <div id="searchResult">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Marka</th>
-                            <th>Renk</th>
-                            <th>Vites Türü</th>
                             <th>Yakıt Tipi</th>
+                            <th>Renk</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -160,9 +150,8 @@
                     data.forEach(item => {
                         var row = searchResultTable.insertRow();
                         row.insertCell().innerText = item.brand;
-                        row.insertCell().innerText = item.plate;
-                        row.insertCell().innerText = item.shifttype;
                         row.insertCell().innerText = item.fuel;
+                        row.insertCell().innerText = item.color;
                     });
                 });
         });

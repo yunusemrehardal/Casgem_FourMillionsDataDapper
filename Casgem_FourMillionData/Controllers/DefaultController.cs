@@ -59,12 +59,11 @@ namespace Casgem_FourMillionData.Controllers
         {
 
             string query = @"
-            SELECT TOP 10000 BRAND, SUBSTRING(PLATE, 1, 2) AS PLATE, SHIFTTYPE, FUEL
+            SELECT TOP 10000 BRAND, SUBSTRING(PLATE, 1, 2) AS PlatePrefix, SHIFTTYPE, FUEL, COLOR
             FROM PLATES
             WHERE BRAND LIKE '%' + @Keyword + '%'
-               OR PLATE LIKE '%' + @Keyword + '%'
-               OR SHIFTTYPE LIKE '%' + @Keyword + '%'
                OR FUEL LIKE '%' + @Keyword + '%'
+               OR COLOR LIKE '%' + @Keyword + '%'
         ";
 
             await using var connection = new SqlConnection(_connectionString);
